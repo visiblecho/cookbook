@@ -6,10 +6,15 @@ import 'dotenv/config'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 
-// * Controllers / Routers
+// * Middleware / Controllers / Routers
 import authRouter from './controllers/auth.js'
+import recipesRouter from './controllers/recipes.js'
+import ingredientsRouter from './controllers/ingredients.js'
+import passUserToView from './middleware/pass-user-to-view.js'
+import isSignedIn from './middleware/is-signed-in.js'
 
 const app = express()
+app.set('view engine', 'ejs')
 
 // * Middleware
 app.use(express.urlencoded())
@@ -25,10 +30,17 @@ app.use(session({
 
 // * Routes
 app.get('/', async (req, res) => {
-  res.render('index.ejs', { user: req.session.user })
+  res.render('index')
 })
 
+app.use(passUserToView)
+
 app.use('/auth', authRouter)
+
+app.use(isSignedIn)
+
+app.use('/recipes', recipesRouter)
+app.use('/ingredients', ingredientsRouter)
 
 // * Connections
 const connect = async () => {
