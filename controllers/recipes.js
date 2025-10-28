@@ -1,6 +1,6 @@
 import express from 'express'
-import User from '/models/user.js'
-import Recipe from '/models/recipe.js'
+import User from '../models/user.js'
+import Recipe from '../models/recipe.js'
 
 const router = express.Router()
 

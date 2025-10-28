@@ -28,12 +28,12 @@ app.use(session({
   store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI })
 }))
 
+app.use(passUserToView)
+
 // * Routes
 app.get('/', async (req, res) => {
   res.render('index')
 })
-
-app.use(passUserToView)
 
 app.use('/auth', authRouter)
 
