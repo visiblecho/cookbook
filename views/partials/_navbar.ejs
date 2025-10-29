@@ -3,7 +3,7 @@
         <ul>
             <li><a href="/">Home</a></li>
             <% if (user) { %>
-                <li><a href="/recipes">My Recipes</a></li>
+                <li><i data-lucide="cooking-pot" class="icon-text"></i><a href="/recipes">Recipes</a></li>
                 
             <% } else { %>
                 
@@ -14,10 +14,10 @@
         <ul>
             <% if (user) { %>
                 <li><i data-lucide="user-round" class="icon-text"></i><%= user.username %></li>
-                <li><a href="/auth/sign-out">Sign out</a></li>
+                <li><i data-lucide="log-out" class="icon-text"></i><a href="/auth/sign-out">Sign out</a></li>
             <% } else { %>
-                <li><a href="/auth/sign-up">Sign up</a></li>
-                <li><a href="/auth/sign-in">Sign in</a></li>
+                <li><i data-lucide="user-round" class="icon-text"></i><a href="/auth/sign-up">Sign up</a></li>
+                <li><i data-lucide="log-in" class="icon-text"></i><a href="/auth/sign-in">Sign in</a></li>
             <% } %>
         </ul>
     </div>
