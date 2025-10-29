@@ -1,8 +1,11 @@
 import express from 'express'
+import session from 'express-session'
+
+import isSignedIn from '../middleware/is-signed-in.js'
+
 import User from '../models/user.js'
 import Recipe from '../models/recipe.js'
-import { render } from 'ejs'
-import session from 'express-session'
+
 
 const router = express.Router()
 
@@ -16,7 +19,7 @@ router.get('', async(req, res) => {
 router.get('/new', (req, res) => res.render('recipes/new'))
 
 // * Create	/recipes	POST
-router.post('', async (req, res) => {
+router.post('', isSignedIn, async (req, res) => {
     req.body.owner = req.session.user._id
     const createdRecipe = await Recipe.create(req.body)
     console.log('Recipe created')

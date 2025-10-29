@@ -1,12 +1,24 @@
 <nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <% if (user) { %>
-            <li><a href="/recipes">My Recipes</a></li>
-            <li><a href="/auth/sign-out">Sign out</a></li>
-        <% } else { %>
-            <li><a href="/auth/sign-up">Sign up</a></li>
-            <li><a href="/auth/sign-in">Sign in</a></li>
-        <% } %>
-    </ul>
+    <div class="nav-section" id="nav-left">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <% if (user) { %>
+                <li><a href="/recipes">My Recipes</a></li>
+                
+            <% } else { %>
+                
+            <% } %>
+        </ul>
+    </div>
+    <div class="nav-section" id="nav-right">
+        <ul>
+            <% if (user) { %>
+                <li><i data-lucide="user-round" class="icon-text"></i><%= user.username %></li>
+                <li><a href="/auth/sign-out">Sign out</a></li>
+            <% } else { %>
+                <li><a href="/auth/sign-up">Sign up</a></li>
+                <li><a href="/auth/sign-in">Sign in</a></li>
+            <% } %>
+        </ul>
+    </div>
 </nav>
