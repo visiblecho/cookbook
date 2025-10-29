@@ -2,7 +2,7 @@
     <ul>
         <li><a href="/">Home</a></li>
         <% if (user) { %>
-            <li>My Recipes</li>
+            <li><a href="/recipes">My Recipes</a></li>
             <li><a href="/auth/sign-out">Sign out</a></li>
         <% } else { %>
             <li><a href="/auth/sign-up">Sign up</a></li>

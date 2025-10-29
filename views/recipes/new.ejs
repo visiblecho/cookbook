@@ -1,0 +1,15 @@
+<%- include('../partials/_header') %>
+<%- include('../partials/_navbar') %>
+    
+<h1>New Recipe</h1>
+<form action="/recipes" method="POST">
+    <label for name>Name</label>
+    <input id="name" name="name" type="text">
+
+    <label for instructions>Instructions</label>
+    <input id="instructions" name="instructions" type="text">
+
+    <button type="submit">Submit</button>
+</form>
+
+<%- include('../partials/_footer') %>

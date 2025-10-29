@@ -1,20 +1,26 @@
 import mongoose from 'mongoose'
+import Ingredient from './ingredient.js'
+import User from './user.js'
 
 const recipeSchema = new mongoose.Schema({
-  email: {
+  name: {
     type: String,
     required: true,
-    unique: true
   },
-  username: {
+  instructions: {
     type: String,
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
-    unique: true
+    ref: User,
   },
-  password: {
-    type: String,
-    required: true
+  /*
+  ingredients: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: Ingredient
   }
+  */
 })
 
 const Recipe = mongoose.model('Recipe', recipeSchema)
